@@ -1,0 +1,76 @@
+:root
+ --textcolor: #005a70
+ --bkcMain: #ccdde5
+ --bkcBC: #005a70
+ --bkcBL: #cc004c
+
+
+*
+  box-sizing: border-box
+  margin: 0
+  padding: 0
+  font-family: sans-serif
+
+body
+  background-color: var(--bkcMain)
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+
+
+.login-container
+  flex: 1
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding: 30px 20px
+
+
+.main-logo
+  max-width: 300px
+  margin-bottom: 30px
+  width: 600px
+
+.toggle-visibility
+  position: absolute
+  right: 10px
+  top: 50%
+  transform: translateY(-50%)
+  cursor: pointer
+
+.forgot-password
+  font-size: 13px
+  color: #333
+  text-decoration: underline
+  margin-bottom: 10px
+
+.footer-img
+  width: 160px
+  margin: 20px auto
+  display: block
+  position: relative
+  right: 250px
+  top: 50px
+
+.red
+  color: red
+
+
+
+.error-toast
+  position: fixed
+  top: 20px
+  right: 20px
+  z-index: 9999
+  display: flex
+  flex-direction: column
+  gap: 10px
+  background-color: #f44336 /* červená */
+  color: white
+  padding: 12px 20px
+  border-radius: 6px
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2)
+  font-size: 14px
+  animation: fadeOut 4s forwards
+  min-width: 220px
+
