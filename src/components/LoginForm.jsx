@@ -2,12 +2,15 @@ import { useState } from "react";
 import EmailInput from "./EmailInput";
 import PasswordInput from "./PasswordInput";
 import LoginButtons from "./LoginButtons";
+import { useNavigate } from 'react-router-dom';
 
 
 export default function LoginForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+
+    const navigate = useNavigate(); // hook
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -30,13 +33,15 @@ export default function LoginForm() {
         }
 
         setError("");
-        alert("Přihlášení proběhlo úspěšně.");
+        // PŘESMĚROVÁNÍ
+        localStorage.setItem('isLoggedIn', 'true'); //Overení Uzivatele
+        navigate("/LoginPage");
     };
-
 
     return (
         <main className="login-container">
             {error && <div className="error-toast">{error}</div>}
+
             <img
                 src="/image/mojeaamberkey.svg"
                 alt="Moje Amber Logo"
@@ -44,10 +49,17 @@ export default function LoginForm() {
             />
 
             <form className="login-form" onSubmit={handleSubmit}>
-                <EmailInput email={email} onChange={(e) => setEmail(e.target.value)} setError={setError} />
-                <PasswordInput password={password} onChange={(e) => setPassword(e.target.value)} setError={setError} />
+                <EmailInput
+                    email={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    setError={setError}
+                />
+                <PasswordInput
+                    password={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    setError={setError}
+                />
                 <LoginButtons />
-
             </form>
         </main>
     );
